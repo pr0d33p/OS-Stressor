@@ -37,6 +37,8 @@ def main():
     parser.add_argument("--index-name", default='*', help="Index name")
     parser.add_argument("-t", "--threads", type=int, default=1, help="Number of threads.")
     parser.add_argument("-s", "--timeout", type=int, default=5, help="Time to Run")
+    parser.add_argument("-u", "--username", default='admin', help="Username")
+    parser.add_argument("-p", "--password", default='admin', help="Password")
     parser.add_argument("-q", "--query", default='{"query": {"match_all": {}}}', help="Query")
     args = parser.parse_args()
 
@@ -46,6 +48,8 @@ def main():
     THREADS = args.threads
     TIMEOUT = args.timeout
     QUERY = args.query
+    OS_USER = args.username
+    OS_PASS = args.password
 
     opensearch = OpenSearch(
         hosts=[{'host': OPENSEARCH_HOST, 'port': OPENSEARCH_PORT}],
@@ -53,7 +57,7 @@ def main():
         verify_certs=False,
         http_compress=True,
         ssl_show_warn=False,
-        http_auth=('admin', 'admin')
+        http_auth=(OS_USER, OS_PASS)
     )
 
     print(f"{'OpenSearch Host':>15}: {OPENSEARCH_HOST}")
