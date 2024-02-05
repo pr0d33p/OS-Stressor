@@ -20,7 +20,7 @@ pip install opensearch-py
 You can then run the script using the following command:
 
 ```bash
-python stressor.py --opensearch-host localhost --opensearch-port 9200 --index-name security-auditlog-* --threads 4 --timeout 10 --query '{"query": {"match_all": {}}}'
+python stressor.py --opensearch-host localhost --opensearch-port 9200 --index-name security-auditlog-* --threads 4 --timeout 10 --query '{"query": {"match_all": {}}}' --username <user> --password <password>
 ```
 
 The script takes the following arguments:
@@ -31,5 +31,7 @@ The script takes the following arguments:
 - `--threads`: The number of concurrent search requests to make.
 - `--timeout`: The timeout for each search request.
 - `--query`: The query to search for.
+- `--username`: The username to use for authentication.
+- `--password`: The password to use for authentication.
 
 > ChatGPT is used to generate the README.MD file
