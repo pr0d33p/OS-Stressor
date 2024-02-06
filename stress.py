@@ -53,7 +53,7 @@ def main():
 
     opensearch = OpenSearch(
         hosts=[{'host': OPENSEARCH_HOST, 'port': OPENSEARCH_PORT}],
-        # use_ssl=True,
+        use_ssl=True,
         verify_certs=False,
         http_compress=True,
         ssl_show_warn=False,
